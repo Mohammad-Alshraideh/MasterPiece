@@ -1,0 +1,273 @@
+﻿@model MasterPieceDb.Models.Product
+
+@{
+    ViewBag.Title = "View Details";
+}
+
+<!-- ============== S-SINGLE-PRODUCT ============== -->
+<section class="s-single-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-5">
+                <!--===== SLIDER-SINGLE-FOR =====-->
+                <div class="slider-single-for">
+                    <div class="slide-single-for">
+                        <a href="~/@Model.ImageURL" class="single-for-img" data-fancybox="prod1">
+                            <img src="@Model.ImageURL" alt="img">
+                        </a>
+                    </div>
+                    <div class="slide-single-for">
+                        <a href="assets/img/single-slider-2.jpg" class="single-for-img" data-fancybox="prod1">
+                            <img src="assets/img/single-slider-2.jpg" alt="img">
+                        </a>
+                    </div>
+                    <div class="slide-single-for">
+                        <a href="assets/img/single-slider-3.jpg" class="single-for-img" data-fancybox="prod1">
+                            <img src="assets/img/single-slider-3.jpg" alt="img">
+                        </a>
+                    </div>
+                    <div class="slide-single-for">
+                        <a href="assets/img/single-slider-4.jpg" class="single-for-img" data-fancybox="prod1">
+                            <img src="assets/img/single-slider-4.jpg" alt="img">
+                        </a>
+                    </div>
+                </div>
+                <!--=== SLIDER-SINGLE-FOR END ===-->
+                <!--===== SLIDER-SINGLE-NAV =====-->
+                <div class="slider-single-nav">
+                    <div class="slide-single-nav">
+                        <div class="single-nav-img">
+                            <img src="assets/img/single-slider-1.jpg" alt="img">
+                        </div>
+                    </div>
+                    <div class="slide-single-nav">
+                        <div class="single-nav-img">
+                            <img src="assets/img/single-slider-2.jpg" alt="img">
+                        </div>
+                    </div>
+                    <div class="slide-single-nav">
+                        <div class="single-nav-img">
+                            <img src="assets/img/single-slider-3.jpg" alt="img">
+                        </div>
+                    </div>
+                    <div class="slide-single-nav">
+                        <div class="single-nav-img">
+                            <img src="assets/img/single-slider-4.jpg" alt="img">
+                        </div>
+                    </div>
+                </div>
+                <!--=== SLIDER-SINGLE-NAV END ===-->
+            </div>
+            <div class="col-12 col-md-7 single-shop-left">
+                <h2 class="title">@Model.Name</h2>
+                <div class="single-price">
+
+
+                    <div class="new-price">@Model.UnitPrice Jd</div>
+                    @*<div class="old-price">$1.799</div>*@
+                </div>
+                <div class="single-color">
+                    <label>color:</label>
+                    <span class="name-color">green</span>
+                    <span class="color" style="background-color: #e0e44a;"></span>
+                </div>
+                <div class="frame-size">
+                    <label>frame size:</label>
+                    <ul>
+                        <li class="active">S</li>
+                        <li>M</li>
+                        <li>L</li>
+                    </ul>
+                </div>
+                <div class="wheel-size">
+                    <label>wheel size:</label>
+                    <ul>
+                        <li class="active">24</li>
+                        <li>26</li>
+                        <li>28</li>
+                    </ul>
+                </div>
+                <div class="single-quanity">
+                    <label>quanity:</label>
+                    <input id="quanity" name="value" value="1">
+                </div>
+                <div class="single-btn-cover">
+                    @if (Model.UnitInStock > 0)
+                    {
+                        <a class="btn btn-buy-now" href="@(Session["username"] != null ? Url.Action("AddToCart", "Product", new { id = Model.ProductID }) : Url.Action("Login", "Account"))"><span>Add To Cart</span></a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-buy-now" ))">Add To Cart</a>
+
+                    }
+                    <a class="btn btn-wishlist" href="@(Session["username"] != null ? Url.Action("WishList", "Product", new { id = Model.ProductID }) : Url.Action("Login", "Account"))"><span>Wishlist</span></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ============ S-SINGLE-PRODUCT END ============ -->
+<!--=============== SINGLE-SHOP-TABS ===============-->
+<section class="single-shop-tabs">
+    <div class="container">
+        <div class="tab-wrap">
+            <ul class="tab-nav product-tabs">
+                <li class="item" rel="tab1"><span>Description</span></li>
+                <li class="item" rel="tab2"><span>Reviews(@ViewBag.Reviews.Count)</span></li>
+                <li class="item" rel="tab3"><span>Q&A</span></li>
+            </ul>
+            <div class="tabs-content">
+                <div class="tab tab1">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <ul class="description-toggle">
+                                <li>
+                                    <span class="title">main configuration <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                                    <ul class="description-toggle-info">
+                                        <li>Frame Size: <span>26</span></li>
+                                        <li>Class: <span>City</span></li>
+                                        <li>Number of speeds <span>7</span></li>
+                                        <li>Type: <span>Rigid</span></li>
+                                        <li>Country registration: <span>USA</span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span class="title">Drive <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                                    <ul class="description-toggle-info">
+                                        <li>Frame Size: <span>26</span></li>
+                                        <li>Class: <span>City</span></li>
+                                        <li>Number of speeds <span>7</span></li>
+                                        <li>Type: <span>Rigid</span></li>
+                                        <li>Country registration: <span>USA</span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span class="title">Wheelset <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                                    <ul class="description-toggle-info">
+                                        <li>Frame Size: <span>26</span></li>
+                                        <li>Class: <span>City</span></li>
+                                        <li>Number of speeds <span>7</span></li>
+                                        <li>Type: <span>Rigid</span></li>
+                                        <li>Country registration: <span>USA</span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span class="title">Special <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                                    <ul class="description-toggle-info">
+                                        <li>Frame Size: <span>26</span></li>
+                                        <li>Class: <span>City</span></li>
+                                        <li>Number of speeds <span>7</span></li>
+                                        <li>Type: <span>Rigid</span></li>
+                                        <li>Country registration: <span>USA</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="single-video">
+                                <a href="#" class="popup-open play_video btn-video" rel="action1" style="background-image: url(assets/img/video-bg.jpg);"><i class="fa fa-play" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab tab2">
+                    <ul class="reviews-list">
+                        @if (ViewBag.Reviews != null)
+                        {
+                            foreach (var item in ViewBag.Reviews)
+                            {
+                                <li class="item">
+
+                                    <div class="review-item">
+
+                                        <div class="review-avatar"><img src="~/assets/img/testimonials-1.png" alt="img"></div>
+                                        <div class="review-content">
+                                            <div class="name">@item.Name</div>
+                                            <div class="date">@item.DateTime</div>
+                                            <p class="review-comment">@item.Review1</p>
+
+                                        </div>
+                                    </div>
+
+                                </li>
+                            }
+                        }
+
+                    </ul>
+                    <div class="reviews-form">
+                        <h3 class="title">Leave a Comment</h3>
+                        @if (Session["username"] != null)
+                        {
+                            using (Html.BeginForm("AddReview", "Product", new { productID = @Model.ProductID }, FormMethod.Post, new { @class = "aa-review-form" }))
+                            {
+                                <ul class="form-cover">
+                                    <li class="inp-name"><input type="text" name="name" placeholder="Name"></li>
+                                    <li class="inp-email"><input type="email" name="email" placeholder="E-mail"></li>
+                                    <li class="inp-text"><textarea name="message" placeholder="Message"></textarea></li>
+                                </ul>
+
+                                <div class="btn-form-cover">
+                                    <button type="submit" class="btn"><span>submit comment</span></button>
+                                </div>
+                            }
+                        }
+                            </div>
+                </div>
+                <div class="tab tab3">
+
+                    <div class="faq-item">
+                        <h5 class="title"><span>I already own a bike. Why do I need bike share?</span></h5>
+                        <p>The power of enabling one-way trips rather than a forced round trip due to having a personal vehicle is transformative. Bike share opens up mobility options that weren’t previously convenient and makes public transit more viable. It also enables greater access to multi-modal trips where you may use bike share for the first part of your trip, but may take the trolley, a car service or even catch a ride with a friend on the way home.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h5 class="title"><span>Tell me about the bikes.</span></h5>
+                        <p>Our smart-bikes from Social Bicycles (SoBi) have brains! This sets them apart from other bike-share systems. On the back of the bike is a GPS-enabled, solar-powered panel with an on-board lock.</p>
+                        <p>With this panel, you can check out the bike, unlock and lock it, put it on hold and report a problem. It will even let you know how many miles you rode and how many calories you burned by logging into your Social Bicycles account.</p>
+                        <p>One of our favorite features on our bikes is the chainless shaft drive. You won’t have to worry about your pants getting caught or getting greasy! They also have nifty extras like 3 speeds, an adjustable seat post, front and rear lights that illuminate automatically, a large, full-sized basket, puncture resistant tires and a bell (just above the left hand grip – give it a turn!).</p>
+                    </div>
+                    <div class="faq-item">
+                        <h5 class="title"><span>What are Coast Hub Stations and Park and Go racks?</span></h5>
+                        <p>A Coast Hub station is where you go to find, check out and return a bike. It’s equipped with bikes and racks that the bikes are locked to.</p>
+                        <p>Locking outside of a station will incur a $3 convenience fee. You’ll also see designated Park and Go racks at businesses around town. This is free Coast parking, so feel free to park here as well!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--============= SINGLE-SHOP-TABS END =============-->
+<!--=============== RELATED PRODUCTS ===============-->
+<section class="s-related-products">
+    <div class="container">
+        <h2 class="title">Related Products</h2>
+        <div class="row product-cover">
+           @{int count = 0;
+               foreach (var item in (List<MasterPieceDb.Models.Product>)@ViewBag.RelatedProducts)
+               {
+                   if(count < 3)
+                   {
+                       { Html.RenderPartial("_Product", item); }
+                   }
+                   else
+                   {
+                       break;
+                   }
+
+                   count++;
+               }
+
+               }
+        </div>
+    </div>
+</section>
+<!--============= RELATED PRODUCTS END =============-->
+
+<script src="~/assets/js/jquery-2.2.4.min.js"></script>
+<script src="~/assets/js/slick.min.js"></script>
+<script src="~/assets/js/jquery-ui.js"></script>
+<script src="~/assets/js/jquery.nice-select.js"></script>
+<script src="~/assets/js/jquery.fancybox.js"></script>
+<script src="~/assets/js/scripts.js"></script>

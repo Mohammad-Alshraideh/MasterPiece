@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Irbike</title>
+    <!-- =================== META =================== -->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="~/assets/img/favicon.png">
+    <!-- =================== STYLE =================== -->
+    <link rel="stylesheet" href="~/assets/css/slick.min.css">
+    <link rel="stylesheet" href="~/assets/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="~/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/assets/css/nice-select.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+</head>
+
+<body>
+    <script src="~/Content/Intellisence/js/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/Intellisence/js/jquery-ui.min.js"></script>
+
+
+ 
+    <div class="container-fluid body-content">
+        <header class="header">
+            <a href="#" class="nav-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+            <div class="top-panel">
+                <div class="container">
+                    <div class="top-panel-cover">
+                        <ul class="header-cont">
+                            <li><a href="tel:+912345687"><i class="fa fa-phone"></i>+96277809510</a></li>
+                            <li><a href="mailto:Irbike@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i>Irbike@gmail.com</a></li>
+                        </ul>
+                        <ul class="icon-right-list">
+                            <li><a class="header-like" href="#"><i class="fa fa-heart" aria-hidden="true"></i><span>0</span></a></li>
+                            @*@Html.Partial("_LoginPartial")*@
+                            <li><a class="header-user" href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                            <li><a class="header-like" href="@Url.Action("Index","MyCart")"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span>@(ViewBag.NoOfItem==null ? 0 :ViewBag.NoOfItem)</span></a></li>
+
+                        </ul>
+                         
+                    </div>
+                </div>
+            </div>
+            <div class="header-menu">
+                <div class="container">
+                    <a href="index.html" class="logo"><img src="~/assets/img/logo.svg" alt="logo"></a>
+                    <nav class="nav-menu">
+                        <ul class="nav-list">
+                            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+
+                            <li><a href="@Url.Action("Products","Product")">Shop</a></li>
+
+
+                            <li><a href="@Url.Action("ContactUs","Home")">Contact Us</a></li>
+                            <li><a href="@Url.Action("AboutUs","Home")">About Us</a></li>
+                        </ul>
+
+                    </nav>
+                </div>
+            </div>
+        </header>
+        @RenderBody()
+        <hr />
+        <!--==================== FOOTER ====================-->
+        <footer>
+            <div class="container">
+                <div class="row footer-item-cover">
+                    <div class="footer-subscribe col-md-7 col-lg-8">
+                        <h6>subscribe</h6>
+                        <p>Subscribe us and you won't miss the new arrivals, as well as discounts and sales.</p>
+                        <form class="subscribe-form">
+                            <i class="fa fa-at" aria-hidden="true"></i>
+                            <input class="inp-form" type="email" name="subscribe" placeholder="E-mail">
+                            <button type="submit" class="btn btn-form"><span>send</span></button>
+                        </form>
+                    </div>
+                    <div class="footer-item col-md-5 col-lg-4">
+                        <h6>info</h6>
+                        <ul class="footer-list">
+                            <li><a href="shop.html">FAQ</a></li>
+                            <li><a href="shop.html">Contacts</a></li>
+                            <li><a href="shop.html">Shipping + Heading</a></li>
+                            <li><a href="shop.html">Exchanges</a></li>
+                            <li><a href="shop.html">2023 Catalog</a></li>
+                            <li><a href="shop.html">Returns</a></li>
+                            <li><a href="shop.html">Search</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row footer-item-cover">
+                    <div class="footer-touch col-md-7 col-lg-8">
+                        <h6>stay in touch</h6>
+                        <ul class="footer-soc social-list">
+                            <li><a target="_blank" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a target="_blank" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a target="_blank" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a target="_blank" href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                        </ul>
+                        <div class="footer-autor">Questions? Please write us at: <a href="#">Irbike@gmail.com</a></div>
+                    </div>
+                    <div class="footer-item col-md-5 col-lg-4">
+                        <h6>shop</h6>
+                        <ul class="footer-list">
+                            <li><a href="shop.html">Road Bike</a></li>
+                            <li><a href="shop.html">City Bike</a></li>
+                            <li><a href="shop.html">Mountain Bike</a></li>
+                            <li><a href="shop.html">Kids Bike</a></li>
+                            <li><a href="shop.html">BMX Bike</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="footer-copyright"><a target="_blank" href="#">Irbike</a> © 2023. All Rights Reserved.</div>
+                    <ul class="footer-pay">
+                        <li><a href="#"><img src="~/assets/img/footer-pay-1.png" alt="img"></a></li>
+                        <li><a href="#"><img src="~/assets/img/footer-pay-2.png" alt="img"></a></li>
+                        <li><a href="#"><img src="~/assets/img/footer-pay-3.png" alt="img"></a></li>
+                        <li><a href="#"><img src="~/assets/img/footer-pay-4.png" alt="img"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <!--================== FOOTER END ==================-->
+    </div>
+
+    <!--==================== SCRIPT	====================-->
+    <script src="~/assets/js/jquery-2.2.4.min.js"></script>
+    <script src="~/assets/js/slick.min.js"></script>
+    <script src="~/assets/js/jquery.nice-select.js"></script>
+    <script src="~/assets/js/wow.js"></script>
+    <script src="~/assets/js/lazyload.min.js"></script>
+    <script src="~/assets/js/scripts.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

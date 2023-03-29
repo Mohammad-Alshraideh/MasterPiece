@@ -1,0 +1,76 @@
+﻿@model IEnumerable<MasterAdmin.Models.Category>
+
+@{
+    ViewBag.Title = "Category";
+}
+
+<div >
+   
+    <a href="@Url.Action("Create", "Category")" class="btn btn-primary"><i class="fa fa-plus"></i> Add New</a>  
+</div>
+<br /><br />
+<div id="category" class="table-responsive ">
+    <table class="table table-condensed table-hover table-bordered table-striped table">
+        <tr>
+    <th>
+        @Html.DisplayNameFor(model => model.Name)
+    </th>
+    
+    <th>
+        @Html.DisplayNameFor(model => model.Description)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Picture1)
+    </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isActive)
+            </th>
+ 
+    
+    
+    <th></th>
+</tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Picture1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Picture2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isActive)
+        </td>
+         
+        
+        
+       
+        <td>
+            <a class="btn btn-sm btn-primary" href="@Url.Action("Edit", "Category", new { id = item.CategoryID })" aria-label="Edit">
+                <i class="fa fa-edit" aria-hidden="true"></i>
+            </a>
+            <a class="btn btn-sm btn-info" href="@Url.Action("Details", "Category", new { id = item.CategoryID })" aria-label="Details">
+                <i class="fa fa-info" aria-hidden="true"></i>
+            </a>
+            <a class="btn btn-sm btn-danger" href="@Url.Action("Delete", "Category", new { id = item.CategoryID })" aria-label="Delete">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </a>
+        </td>
+    </tr>
+}
+    
+
+    </table>
+</div>

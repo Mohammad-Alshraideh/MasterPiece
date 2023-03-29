@@ -1,0 +1,298 @@
+﻿@model IEnumerable<MasterPieceDb.Models.OrderDetail>
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+
+.title{
+    margin-bottom: 5vh;
+}
+.card{
+    margin: auto;
+    max-width: 950px;
+    width: 90%;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1rem;
+    border: transparent;
+}
+@@media(max-width:767px){
+    .card{
+        margin: 3vh auto;
+    }
+}
+.cart{
+    background-color: #fff;
+    padding: 4vh 5vh;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+}
+@@media(max-width:767px){
+    .cart{
+        padding: 4vh;
+        border-bottom-left-radius: unset;
+        border-top-right-radius: 1rem;
+    }
+}
+.summary{
+    background-color: #ddd;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 4vh;
+    color: rgb(65, 65, 65);
+}
+@@media(max-width:767px){
+    .summary{
+    border-top-right-radius: unset;
+    border-bottom-left-radius: 1rem;
+    }
+}
+.summary .col-2{
+    padding: 0;
+}
+.summary .col-10
+{
+    padding: 0;
+}.row{
+    margin: 0;
+}
+.title b{
+    font-size: 1.5rem;
+}
+.main{
+    margin: 0;
+    padding: 2vh 0;
+    width: 100%;
+}
+.col-2, .col{
+    padding: 0 1vh;
+}
+a{
+    padding: 0 1vh;
+}
+.close{
+    margin-left: auto;
+    font-size: 0.7rem;
+}
+img{
+    width: 3.5rem;
+}
+.back-to-shop{
+    margin-top: 4.5rem;
+}
+h5{
+    margin-top: 4vh;
+}
+hr{
+    margin-top: 1.25rem;
+}
+form{
+    padding: 2vh 0;
+}
+select{
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1.5vh 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247);
+}
+.input_cart{
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247);
+}
+.input_cart:focus::-webkit-input-placeholder
+{
+      color:transparent;
+}
+.btn_cart{
+
+
+    width: 100%;
+    font-size: 0.7rem;
+    margin-top: 4vh;
+    padding: 1vh;
+    border-radius: 0;
+}
+
+
+ #code{
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253) , rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: center;
+}
+</style>
+<br>  <!-- PAGE SECTION START -->
+<div class="container">
+    <div>
+        <div class="row">
+
+            <div class="col-md-8 cart">
+                <div class="title">
+                    <div class="row">
+                        <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                        <div class="col align-self-center text-right text-muted">@Model.Count() items</div>
+                    </div>
+                </div>
+                <form action="MyCart/ProcedToCheckout" method="post">
+
+                    @if (Session["username"] != null)
+                    {
+                        int i = 0;
+                        foreach (var item in Model)
+                        {
+                            @Html.Hidden("shcartID-" + i + "", item.ProductID)
+                            if (i == 0)
+                            {
+                                <div class="row border-top border-bottom">
+                                    <div class="row main align-items-center">
+                                        <div class="col-2"><img class="img-fluid" src="@item.Product.ImageURL"></div>
+                                        <div class="col">
+                                            <div class="row text-muted">@item.Product.Name</div>
+
+                                        </div>
+                                        <div class="col">
+                                            <input id="itemQty-@(i)" name="Qty-@(i)" class="aa-cart-quantity" type="number" maxlength="2" min="1" max="99" value="@(item.Quantity == null ? "1" : item.Quantity.ToString())" />
+                                        </div>
+                                        <div class="col">@item.UnitPrice <a class="remove" href="@Url.Action("Remove", "MyCart", new { id = item.ProductID })"><fa class="fa fa-close"></fa></a></div>
+                                    </div>
+                                </div>
+                            }
+                            else if (i == Model.Count())
+                            {
+
+
+                                <div class="row border-top border-bottom">
+                                    <div class="row main align-items-center">
+                                        <div class="col-2"><img class="img-fluid" src="@item.Product.ImageURL"></div>
+                                        <div class="col">
+                                            <div class="row text-muted">@item.Product.Name</div>
+
+                                        </div>
+                                        <div class="col">
+                                            <input id="itemQty-@(i)" name="Qty-@(i)" class="aa-cart-quantity" type="number" maxlength="2" min="1" max="99" value="@(item.Quantity == null ? "1" : item.Quantity.ToString())" />
+                                        </div>
+                                        <div class="col">@item.UnitPrice <a class="remove" href="@Url.Action("Remove", "MyCart", new { id = item.ProductID })"><fa class="fa fa-close"></fa></a></div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="row">
+                                    <div class="row main align-items-center">
+                                        <div class="col-2"><img class="img-fluid" src="@item.Product.ImageURL"></div>
+                                        <div class="col">
+                                            <div class="row text-muted">@item.Product.Name</div>
+
+                                        </div>
+                                        <div class="col">
+                                            <input id="itemQty-@(i)" name="Qty-@(i)" class="aa-cart-quantity" type="number" maxlength="2" min="1" max="99" value="@(item.Quantity == null ? "1" : item.Quantity.ToString())" />
+                                        </div>
+                                        <div class="col"><strong id="itemAmount-@(i)">@item.TotalAmount</strong> <a class="remove" href="@Url.Action("Remove", "MyCart", new { id = item.ProductID })"><fa class="fa fa-close"></fa></a></div>
+                                    </div>
+                                </div>
+                            }
+
+
+
+
+
+                            i++;
+                        }
+                    }
+                    else
+                    {
+                        <p>Please Login To View Cart</p>
+                    }
+                    <div class="back-to-shop">
+                        <a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span>
+                    </div>
+
+            </div>
+            <div class="col-md-4 summary" style="background-color: beige;">
+                <div><h5><b>Summary</b></h5></div>
+                <hr>
+                <div class="row">
+                    <div class="col" style="padding-left:0;">@Model.Count() Items</div>
+                    <div class="col text-right"><strong id="subTotal">0</strong></div>
+                </div>
+
+                <p>SHIPPING</p>
+                <select><option class="text-muted">Standard-Delivery- &euro;5.00</option></select>
+                <p>GIVE CODE</p>
+                <input class="input_cart" id="code" placeholder="Enter your code">
+
+                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                    <div class="col">TOTAL PRICE</div>
+                    <div class="col text-right">&euro; 137.00</div>
+                </div>
+                <button type="submit" class="btn btn-form btn_cart"><span>CHECKOUT</span></button>
+            </div>
+
+
+            </form>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+<br>
+ <!-- / Cart view section -->
+<script type="text/javascript">
+    $(function () {
+        $(':input[type="number"]').change(function () {
+
+            var index = $(this).attr('id').split("-")[1];
+
+            var itemPriceEle = document.getElementById('itemPrice-' + index + '');
+            var itemQty = $('#itemQty-' + index + '').val();
+            var amountEle = document.getElementById('itemAmount-' + index + '');
+
+            var amount = itemQty * parseInt(itemPriceEle.innerText);
+
+            amountEle.innerText = amount;
+
+            CartsTotal();
+
+
+
+        });
+        CartsTotal();
+    });
+    function CartsTotal() {
+        var subAmount = 0;
+        var i = 0;
+        for (var i = 0; i < 5;) {
+            if (parseInt($('#itemAmount-' + i + '').text()) > 0) {
+                subAmount = subAmount + parseInt($('#itemAmount-' + i + '').text());
+                i++;
+            }
+            else {
+                break;
+            }
+        }
+        var subTotalEle = document.getElementById('subTotal');
+        subTotalEle.innerText = subAmount;
+
+        var TotalAmountEle = document.getElementById('totalAmount');
+        TotalAmountEle.innerText = subAmount;
+    }
+    function TotalAmount() {
+        for (var i = 0; i < 5; i++) {
+            var itemPriceEle = document.getElementById('itemPrice-' + i + '');
+            var itemQty = $('#itemQty-' + i + '').val();
+            var amountEle = document.getElementById('itemAmount-' + i + '');
+
+            var amount = itemQty * parseInt(itemPriceEle.innerText);
+
+            amountEle.innerText = amount;
+        }
+    }
+</script>
